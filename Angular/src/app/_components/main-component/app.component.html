@@ -1,0 +1,49 @@
+<div class="main">
+
+    <div class="navigation">
+        <md-toolbar color="primary">
+
+            <!-- Logo -->
+            <span><a routerLink="/home"> <img src="../../../favicon.ico">Hire me </a></span>
+
+            <span class="space-between"></span>
+
+            <span class="actionButtons">
+                <button md-raised-button color="accent" [mdMenuTriggerFor]="menu">
+                  Login
+                </button>
+
+                <md-menu #menu="mdMenu">
+
+                    <button md-menu-item (click)="loginFb()">
+                        <span class="fa fa-facebook">&nbsp;&nbsp;</span>
+                        <span>Facebook</span>
+                    </button>
+
+                    <button md-menu-item >
+                        <span class="fa fa-google">&nbsp;</span>
+                        <span>Google</span>
+                    </button>
+
+                    <button md-menu-item (click)="onLinkedInLoad(); onLinkedInAuth()">
+                          <span class="fa fa-linkedin">&nbsp;&nbsp;</span>
+                        <span>LinkedIn</span>
+                    </button>
+                </md-menu>
+
+                <button md-raised-button (click)="postJob()">
+                    Post Job
+                </button>
+            </span>
+
+        </md-toolbar>
+    </div>
+
+    <div class="central">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+
+
+

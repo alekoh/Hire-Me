@@ -1,0 +1,23 @@
+.newAdvertForm {
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.newAdvertForm > md-input-container {
+    width: 100%;
+}
+
+.jobType {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.typeItem {
+    width: 30%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+}

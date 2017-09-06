@@ -1,0 +1,32 @@
+<div class="container-search">
+
+    <div class="welcome-text">
+        <h1 id="welcome-title">
+            Find your next job in Skopje
+        </h1>
+
+        <h2>As a software engineer</h2>
+    </div>
+
+    <div class="form">
+        <form class="form" #form="ngForm" (ngSubmit)="search()">
+
+            <input mdInput type="text" id="location" name="location" placeholder="Location.." [mdAutocomplete]="auto" [formControl]="cityCtrl">
+
+            <md-autocomplete #auto="mdAutocomplete">
+                <md-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{ city }}
+                </md-option>
+            </md-autocomplete>
+
+            <input type="text" id="jobType" name="jobType" placeholder="Job type.." [(ngModel)]="jobType">
+
+            <button class="btn-search" md-raised-button color="primary" type="submit">Search</button>
+        </form>
+
+        <div>
+            {{posts}}
+        </div>
+    </div>
+
+</div>

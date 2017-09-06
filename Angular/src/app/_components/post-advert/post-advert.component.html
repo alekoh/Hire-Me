@@ -1,0 +1,80 @@
+
+<div class="container">
+
+    <h1>Create a job post</h1>
+    <p>Please fill the form according to your needs. The fields prefixed with "*" are required, make sure to fill them out. After successful save, you will have a chance to edit the job post as many times as you need.</p>
+
+    <hr>
+
+    <div class="jobType">
+        <md-card class="typeItem">
+            <md-card-title class="fa fa-suitcase"></md-card-title>
+            <md-card-content>
+                <h2>Full time</h2>
+                <h3>100$</h3>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="typeItem">
+            <md-card-title class="fa fa-clock-o"></md-card-title>
+            <md-card-content>
+                <h2>Part time</h2>
+                <h3>100$</h3>
+            </md-card-content>
+        </md-card>
+
+        <md-card class="typeItem">
+            <md-card-title class="fa fa-university"></md-card-title>
+            <md-card-content>
+                <h2>Internship</h2>
+                <h3>100$</h3>
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <br/>
+
+    <div class="jobForm">
+
+        <form class="newAdvertForm" [formGroup]="form" novalidate (ngSubmit)="createNewAdvert(form.value)">
+
+            <md-input-container>
+                <input mdInput placeholder="Company name" required formControlName="company">
+            </md-input-container>
+            <br/>
+
+            <md-input-container>
+                <input mdInput placeholder="Company website" formControlName="website">
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Name of advert" required formControlName="name">
+            </md-input-container>
+            <br/>
+
+            <md-input-container>
+                <input mdInput placeholder="Type of advert" required formControlName="type">
+            </md-input-container>
+            <br/>
+
+            <md-input-container>
+                <input mdInput placeholder="Location" required formControlName="location">
+            </md-input-container>
+            <br/>
+
+            <label for="description" style="color:darkgray">Description: </label><br/>
+            <textarea rows="5" cols="50" class="form-control" id="description" formControlName="description"></textarea>
+
+            <br/>
+            <button md-raised-button color="primary" type="submit">Create new Job</button>
+
+        </form>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <footer>
+        <p>Developed and maintained by Alek</p>
+    </footer>
+</div>

@@ -1,0 +1,15 @@
+
+<div class="searchFilters">
+    <div *ngFor="let advert of listAdverts">
+        {{advert.name}}
+        {{advert.company}}
+        {{advert.description}}
+    </div>
+    <ul class="listFilters">
+        <li class="locationFilter itemFilter"></li>
+        <li class="typeFilter itemFilter"></li>
+        <li class="timeFilter itemFilter"></li>
+        <li class="remoteFilter itemFilter"></li>
+    </ul>
+</div>
+
