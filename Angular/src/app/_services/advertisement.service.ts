@@ -6,14 +6,14 @@ import 'rxjs/add/operator/toPromise';
 import { Advertisement } from '../_components/advertisement-component/advertisement';
 
 @Injectable()
-export class ItemsService {
+export class AdvertService {
     private advertisementsUrl = 'http://localhost:8000/adverts';
     private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     private body = new URLSearchParams();
 
     constructor(private http: Http) { }
 
-    getAdvertisements(): Promise<Advertisemenet[]> {
+    getAdvertisements(): Promise<Advertisement[]> {
         return this.http.get(this.advertisementsUrl)
             .toPromise()
             .then(response => response.json())

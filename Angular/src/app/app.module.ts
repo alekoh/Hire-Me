@@ -10,7 +10,7 @@ import { MdIconModule, MdMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 import { FacebookService } from 'ng2-facebook-sdk';
-import { ItemsService } from './_services/advertisement.service';
+import { AdvertService } from './_services/advertisement.service';
 import { AppRoutingModule } from "./app.routing.module";
 
 // Components
@@ -27,7 +27,9 @@ import { AdvertisementComponentComponent } from './_components/advertisement-com
 
 import 'hammerjs';
 import { MiddleComponent } from './_components/middle/middle.component';
-import { PostAdvertComponent } from './_components/post-advert/post-advert.component';
+import { PostAdvertComponent, DialogComponent  } from './_components/post-advert/post-advert.component';
+import {  MdDialogModule } from '@angular/material';
+
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { PostAdvertComponent } from './_components/post-advert/post-advert.compo
         MapComponent,
         AdvertisementComponentComponent,
         MiddleComponent,
-        PostAdvertComponent
+        PostAdvertComponent,
+        DialogComponent
     ],
     imports: [
         HttpModule,
@@ -51,6 +54,7 @@ import { PostAdvertComponent } from './_components/post-advert/post-advert.compo
         MdInputModule,
         MdMenuModule,
         MdIconModule,
+        MaterialModule,
         FormsModule,
         ReactiveFormsModule,
         AgmCoreModule.forRoot({
@@ -60,13 +64,16 @@ import { PostAdvertComponent } from './_components/post-advert/post-advert.compo
     ],
     providers: [
         FacebookService,
-        ItemsService
+        AdvertService
     ],
 
     schemas: [
         NO_ERRORS_SCHEMA
     ],
 
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+        DialogComponent,
+    ],
 })
 export class AppModule { }

@@ -1,15 +1,33 @@
-
 <div class="searchFilters">
-    <div *ngFor="let advert of listAdverts">
-        {{advert.name}}
+    
+  <div *ngFor="let advert of listAdverts">
+    <md-card class="example-card">
+      <md-card-header>
+        <md-card-title><h3>{{ advert.name }}</h3></md-card-title>
+        <md-card-subtitle><h5>{{ advert.jobType }}</h5></md-card-subtitle>        
+      </md-card-header>
+      <md-card-content>
+        <p> {{ advert.description}} </p>
+        <hr />
+        <div class="small">
+            <p>Company name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ advert.company }}</p>
+            <p>Company website: &nbsp; {{ advert.website }}</p>
+            <p>Job location: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ advert.location }}</p>
+        </div>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+      </md-card-actions>
+    </md-card>
+    <!--{{advert.name}}
         {{advert.company}}
-        {{advert.description}}
-    </div>
-    <ul class="listFilters">
-        <li class="locationFilter itemFilter"></li>
-        <li class="typeFilter itemFilter"></li>
-        <li class="timeFilter itemFilter"></li>
-        <li class="remoteFilter itemFilter"></li>
-    </ul>
+        {{advert.description}}-->
+  </div>
+  <ul class="listFilters">
+    <li class="locationFilter itemFilter"></li>
+    <li class="typeFilter itemFilter"></li>
+    <li class="timeFilter itemFilter"></li>
+    <li class="remoteFilter itemFilter"></li>
+  </ul>
 </div>
-
