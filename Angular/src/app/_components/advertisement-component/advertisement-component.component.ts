@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Advertisement } from "./advertisement";
-import { ItemsService } from "../../_services/advertisement.service";
+import { AdvertService } from "../../_services/advertisement.service";
 
 @Component({
     selector: 'app-advertisement-component',
@@ -12,7 +12,7 @@ export class AdvertisementComponentComponent implements OnInit {
     advert: Advertisement;
     listAdverts: Advertisement[];
 
-    constructor(public advertService: ItemsService) { }
+    constructor(public advertService: AdvertService) { }
 
     ngOnInit() {
         this.getAdvertisment();

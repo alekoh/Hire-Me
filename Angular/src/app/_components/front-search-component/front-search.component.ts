@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {Router} from "@angular/router";
 
-import { ItemsService } from '../../_services/advertisement.service';
+import { AdvertService } from '../../_services/advertisement.service';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
@@ -19,7 +19,7 @@ export class FrontSearchComponent implements OnInit {
     filteredCities: any;
     posts: any;
 
-    constructor(private advertService: ItemsService, private router: Router) {
+    constructor(private advertService: AdvertService, private router: Router) {
         this.cityCtrl = new FormControl();
         this.filteredCities = this.cityCtrl.valueChanges
             .startWith(null)

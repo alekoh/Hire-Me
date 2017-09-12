@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    background: #673ab7; /* For browsers that do not support gradients */
+
 }
 
 /* Navigation element */
