@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Advertisement } from '../advertisement-component/advertisement';
+import { Advertisement } from '../list-advertisements-component/advertisement';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {AdvertService} from "../../_services/advertisement.service";
 import {MdDialog, MdDialogRef} from '@angular/material';

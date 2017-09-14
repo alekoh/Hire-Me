@@ -3,7 +3,7 @@ import { Headers, Http, URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Advertisement } from '../_components/advertisement-component/advertisement';
+import { Advertisement } from '../_components/list-advertisements-component/advertisement';
 
 @Injectable()
 export class AdvertService {
