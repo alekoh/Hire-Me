@@ -16,7 +16,8 @@ const routes: Routes = [
     { path: "home", component: MiddleComponent },
     { path: "adverts", component: AdvertisementComponentComponent },
     { path: "search", component: AdvertisementComponentComponent },
-    { path: "postAdvert", component: PostAdvertComponent}
+    { path: "postAdvert", component: PostAdvertComponent},
+    { path: "**", redirectTo: "/home", pathMatch: "full" },
 ];
 
 @NgModule({

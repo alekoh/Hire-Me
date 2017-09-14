@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MdMenuTrigger } from '@angular/material';
 import { AuthResponse, InitParams, FacebookService, LoginResponse, LoginOptions } from 'ng2-facebook-sdk';
+import {GoogleSignInSuccess} from 'angular-google-signin';
+import { AuthService } from 'angular2-social-login';
+
 import {Router} from "@angular/router";
 
 declare var IN: any;
+declare var gapi: any;
+
 
 @Component({
     selector: 'app-root',
@@ -11,9 +16,13 @@ declare var IN: any;
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'app';
+    public myClientId: string = '903075759019-3q89hsrh5q0p8kjvk4etv9l8d6qflqro.apps.googleusercontent.com';
+    public user;
+    @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;
 
-    constructor(private fb: FacebookService, private router: Router) {
+    constructor(private fb: FacebookService,
+                private router: Router,
+                public auth: AuthService) {
         const fbParams: InitParams = {
             appId: '1918180375122700',
             xfbml: true,
@@ -23,7 +32,8 @@ export class AppComponent {
         this.fb.init(fbParams);
     }
 
-    loginFb() {
+    public loginFb() {
+        this.trigger.closeMenu();
         this.fb.login()
             .then((res: LoginResponse) => {
                 console.log('Logged in', res);
@@ -47,6 +57,25 @@ export class AppComponent {
                 function(result) {
                 })
             .error(this.handleError);
+    }
+
+    onGoogleSignInSuccess(event: GoogleSignInSuccess) {
+        console.log("Google sign in");
+        let googleUser: gapi.auth2.GoogleUser = event.googleUser;
+        let id: string = googleUser.getId();
+        let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile .getId());
+        console.log('Name: ' + profile.getName());
+    }
+
+    logout() {
+        this.auth.logout().subscribe(
+        (data) => {
+            console.log(data);
+            this.user = null;
+            console.log('Logged out');
+        }
+        )
     }
 
     displayProfiles(profiles) {

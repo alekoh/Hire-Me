@@ -3,6 +3,7 @@ import { Advertisement } from '../advertisement-component/advertisement';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {AdvertService} from "../../_services/advertisement.service";
 import {MdDialog, MdDialogRef} from '@angular/material';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-post-advert',
@@ -16,7 +17,7 @@ export class PostAdvertComponent implements OnInit {
     public submited: boolean;
 
     constructor(private fb: FormBuilder, private advertService: AdvertService,
-                public dialog: MdDialog) { }
+                public dialog: MdDialog, private router: Router) { }
 
     ngOnInit() {
         this.form = this.fb.group({
@@ -34,7 +35,8 @@ export class PostAdvertComponent implements OnInit {
             .then((res) => console.log(res));
 
         this.dialog.open(DialogComponent);
-        this.form.reset()
+        this.form.reset();
+        this.router.navigate(['/home']);
   }
 }
 

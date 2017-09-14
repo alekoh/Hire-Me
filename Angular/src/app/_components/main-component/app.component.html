@@ -13,16 +13,22 @@
                   Login
                 </button>
 
-                <md-menu #menu="mdMenu">
-
-                    <button md-menu-item (click)="loginFb()">
+                <md-menu-bar>
+                <md-menu #menu="mdMenu" yPosition="below">
+                        <button md-menu-item (click)="loginFb()" (close)="console.log('test')">
                         <span class="fa fa-facebook">&nbsp;&nbsp;</span>
                         <span>Facebook</span>
                     </button>
 
+                    
+
                     <button md-menu-item >
                         <span class="fa fa-google">&nbsp;</span>
                         <span>Google</span>
+                        <!--<google-signin class="btn btn-lg"
+                            [clientId]="myClientId"
+                            (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+                        </google-signin>-->
                     </button>
 
                     <button md-menu-item (click)="onLinkedInLoad(); onLinkedInAuth()">
@@ -30,7 +36,7 @@
                         <span>LinkedIn</span>
                     </button>
                 </md-menu>
-
+                </md-menu-bar>
                 <button md-raised-button (click)="postJob()">
                     Post Job
                 </button>
