@@ -24,6 +24,21 @@ import { Angular2SocialLoginModule } from 'angular2-social-login';
 import { SearchResultsComponent } from './_components/search-results/search-results.component';
 
 
+let providers = {
+    'linkedin': {
+      'clientId': '78s8xwpk6n2hru'
+    },
+    'google': {
+      'clientId': '903075759019-3q89hsrh5q0p8kjvk4etv9l8d6qflqro.apps.googleusercontent.com'
+    },
+    'facebook' : {
+      'clientId': '1918180375122700',
+      'apiVersion': 'v2.9'
+    }
+};
+
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -71,3 +86,4 @@ import { SearchResultsComponent } from './_components/search-results/search-resu
     ],
 })
 export class AppModule { }
+Angular2SocialLoginModule.loadProvidersScripts(providers);

@@ -9,34 +9,29 @@
             <span class="space-between"></span>
 
             <span class="actionButtons">
-                <button md-raised-button color="accent" [mdMenuTriggerFor]="menu">
+                <button md-raised-button color="accent" [mdMenuTriggerFor]="menu" #currentUser>
                   Login
                 </button>
 
                 <md-menu-bar>
-                <md-menu #menu="mdMenu" yPosition="below">
-                        <button md-menu-item (click)="loginFb()" (close)="console.log('test')">
-                        <span class="fa fa-facebook">&nbsp;&nbsp;</span>
-                        <span>Facebook</span>
-                    </button>
+                    <md-menu #menu="mdMenu" yPosition="below" >
+                        <button md-menu-item (click)="loginFb()" (close)="console.log('test')" #fbLogin>
+                            <span class="fa fa-facebook">&nbsp;&nbsp;</span>
+                            <span>Facebook</span>
+                        </button>
 
-                    
+                        <button md-menu-item (click)="onLinkedInLoad(); onLinkedInAuth()" #liLogin>
+                            <span class="fa fa-linkedin">&nbsp;&nbsp;</span>
+                            <span>LinkedIn</span>
+                        </button>
 
-                    <button md-menu-item >
-                        <span class="fa fa-google">&nbsp;</span>
-                        <span>Google</span>
-                        <!--<google-signin class="btn btn-lg"
-                            [clientId]="myClientId"
-                            (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-                        </google-signin>-->
-                    </button>
+                        <button md-menu-item (click)="logout()" #logoutAll>
+                            <span>Logout</span>
+                        </button>
 
-                    <button md-menu-item (click)="onLinkedInLoad(); onLinkedInAuth()">
-                          <span class="fa fa-linkedin">&nbsp;&nbsp;</span>
-                        <span>LinkedIn</span>
-                    </button>
-                </md-menu>
+                    </md-menu>
                 </md-menu-bar>
+
                 <button md-raised-button (click)="postJob()">
                     Post Job
                 </button>
