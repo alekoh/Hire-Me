@@ -10,6 +10,7 @@ import { MdIconModule, MdMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 import { FacebookService } from 'ng2-facebook-sdk';
+import { GoogleSignInComponent } from 'angular-google-signin';
 import { AdvertService } from './_services/advertisement.service';
 import { AppRoutingModule } from "./app.routing.module";
 
@@ -30,11 +31,12 @@ import { MiddleComponent } from './_components/middle/middle.component';
 import { PostAdvertComponent, DialogComponent  } from './_components/post-advert/post-advert.component';
 import {  MdDialogModule } from '@angular/material';
 
-
+import { Angular2SocialLoginModule } from 'angular2-social-login';
 
 @NgModule({
     declarations: [
         AppComponent,
+        GoogleSignInComponent,
         FrontSearchComponent,
         MapComponent,
         AdvertisementComponentComponent,
@@ -61,6 +63,7 @@ import {  MdDialogModule } from '@angular/material';
             apiKey: 'AIzaSyD8yUPHwmnLEoiwew4fcBohSJBYXpSrwc8'
         }),
         // InMemoryWebApiModule.forRoot(InMemoryDataService)
+        Angular2SocialLoginModule
     ],
     providers: [
         FacebookService,
