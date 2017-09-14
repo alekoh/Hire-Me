@@ -2,17 +2,20 @@
 
     <div *ngFor="let advert of listAdverts">
 
-        <md-expansion-panel>
-            <md-expansion-panel-header>
-                <md-panel-title>
-                    {{advert.name}}
-                </md-panel-title>
-                <md-panel-description>
-                    {{advert.location}}
-                </md-panel-description>
-            </md-expansion-panel-header>
+        <div class="jobItem">
+            <md-expansion-panel>
+                <md-expansion-panel-header>
+                    <md-panel-title>
+                        {{advert.name}}
+                    </md-panel-title>
+                    <md-panel-description>
+                        {{advert.location}}
+                    </md-panel-description>
+                </md-expansion-panel-header>
 
-            {{advert.description}}
-        </md-expansion-panel>
+                {{advert.description}}
+            </md-expansion-panel>
+        </div>
+
     </div>
 </div>
