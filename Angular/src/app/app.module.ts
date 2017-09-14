@@ -19,6 +19,22 @@ import { AppComponent } from './_components/main-component/app.component';
 import { FrontSearchComponent } from './_components/front-search-component/front-search.component';
 import { MapComponent } from './_components/map/map.component';
 
+import { Angular2SocialLoginModule } from 'angular2-social-login';
+
+
+let providers = {
+    'linkedin': {
+      'clientId': '78s8xwpk6n2hru'
+    },
+    'google': {
+      'clientId': '903075759019-3q89hsrh5q0p8kjvk4etv9l8d6qflqro.apps.googleusercontent.com'
+    },
+    'facebook' : {
+      'clientId': '1918180375122700',
+      'apiVersion': 'v2.9'
+    }
+};
+
 import 'hammerjs';
 
 // Imports for loading & configuring the in-memory web api
@@ -31,7 +47,6 @@ import { MiddleComponent } from './_components/middle/middle.component';
 import { PostAdvertComponent, DialogComponent  } from './_components/post-advert/post-advert.component';
 import {  MdDialogModule } from '@angular/material';
 
-import { Angular2SocialLoginModule } from 'angular2-social-login';
 
 @NgModule({
     declarations: [
@@ -80,3 +95,4 @@ import { Angular2SocialLoginModule } from 'angular2-social-login';
     ],
 })
 export class AppModule { }
+Angular2SocialLoginModule.loadProvidersScripts(providers);

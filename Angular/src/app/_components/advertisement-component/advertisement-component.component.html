@@ -1,8 +1,8 @@
 <div class="searchFilters">
     
-  <div *ngFor="let advert of listAdverts">
+  <div *ngFor="let advert of listAdverts; let i of index" >
 
-    <md-card class="example-card">
+    <md-card class="example-card" #card>
       <md-expansion-panel>
 
         <md-expansion-panel-header>
@@ -31,8 +31,8 @@
         </div>
         <hr />
         <md-card-actions>
-          <button md-button>LIKE</button>
-          <button md-button>SHARE</button>
+          <button md-button (click)="saveFav()">LIKE</button>
+          <button md-button (click)="share()">SHARE</button>
         </md-card-actions>
       </md-card-content>
       </md-form-field>
