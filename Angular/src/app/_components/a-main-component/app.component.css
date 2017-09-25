@@ -8,6 +8,10 @@
 
 }
 
+a {
+    color: white;
+}
+
 /* Navigation element */
 .navigation {
     display: flex;

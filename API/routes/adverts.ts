@@ -9,22 +9,11 @@ let connection = require("../config/mysql");
 let jwt = require("jwt-simple");
 
 
-/**
- * Function that acts as a middleware, it authenticates the tokens sent from the client.
- * Returns boolean:
- *     true => if jwt is successfully decoded - Authorized
- *     false => jwt is not successfully decoded - Unauthorized
- *
- *  @params token: token sent from the client
- **/
-
-
 module.exports = (app) => {
     connection.connect();
 
     // Get all adverts
     app.get("/adverts", (req, res) => {
-
         connection.query("SELECT * FROM adverts", (err, results) => {
             if (err) {
                 res.send("Something wrong with the database");
@@ -35,8 +24,9 @@ module.exports = (app) => {
     });
 
     // Getting advert by id
-    app.get("/advert/:id", (req, res) => {
+    app.get("/adverts/:id", (req, res) => {
 
+        console.log("Sara");
         const id = req.params.id;
 
         connection.query("SELECT * FROM adverts WHERE id=?", id, (err, result) => {
@@ -46,20 +36,28 @@ module.exports = (app) => {
         });
     });
 
-    // Getting advert by name => used for searching adverts
-    app.get("/search/:location/:jobType", (req, res) => {
+    // Search by location
+    app.get("/searchloc/:location", (req, res) => {
 
-        let advert = {
-            location: req.params.location,
-            jobType: req.params.jobType
-        };
+        const location = req.params.location;
+        console.log(location);
 
-        let query = `SELECT * FROM adverts WHERE location LIKE '%${advert.location}' AND jobType LIKE '%${advert.jobType}'`;
-
-        connection.query(query, (err, results) => {
+        connection.query(`SELECT * FROM adverts WHERE location='${location}'`, (err, result) => {
             if (err) {
-                res.send("There is no advert with that term");
-            } else { res.send(results); }
+                res.send("There is no such advert!");
+            } else { res.send(result); }
+        });
+    });
+
+    // Search by jobType
+    app.get("/searchjt/:jobType", (req, res) => {
+
+        const jobType = req.params.jobType;
+
+        connection.query("SELECT * FROM adverts WHERE jobType=?", jobType, (err, result) => {
+            if (err) {
+                res.send("There is no such advert!");
+            } else { res.send(result); }
         });
     });
 

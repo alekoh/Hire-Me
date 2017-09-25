@@ -7,29 +7,47 @@ import { Advertisement } from '../_components/list-advertisements-component/adve
 
 @Injectable()
 export class AdvertService {
-    private advertisementsUrl = 'http://localhost:8000/adverts';
+    private advertisementsUrl = 'http://localhost:8000';
     private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     private body = new URLSearchParams();
 
     constructor(private http: Http) { }
 
     getAdvertisements(): Promise<Advertisement[]> {
-        return this.http.get(this.advertisementsUrl)
+        const url = `${this.advertisementsUrl}/adverts`;
+
+        return this.http.get(url)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+
+    getAdvertisementByLocation(location: string): Promise<Advertisement[]> {
+        const url = `${this.advertisementsUrl}/searchloc/${location}`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+
+    getAdvertisementByJobType(jobType: string): Promise<Advertisement[]> {
+        const url = `${this.advertisementsUrl}/searchjt/${jobType}`;
+        return this.http.get(url)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
     }
 
     getAdvertisementById(id: number): Promise<Advertisement> {
-        const url = `${this.advertisementsUrl}/${id}`;
+        const url = `${this.advertisementsUrl}/adverts/${id}`;
         return this.http.get(url)
             .toPromise()
-            .then(response => response.json().data as Advertisement)
+            .then(response => response.json())
             .catch(this.handleError);
     }
 
     delete(id: number): Promise<void> {
-        const url = `${this.advertisementsUrl}/${id}`;
+        const url = `${this.advertisementsUrl}/adverts/${id}`;
         return this.http.delete(url, {headers: this.headers})
             .toPromise()
             .then(() => null)
@@ -45,14 +63,14 @@ export class AdvertService {
         this.body.set("website", advert.website);
 
         return this.http
-            .post(this.advertisementsUrl, this.body, {headers: this.headers})
+            .post(this.advertisementsUrl + "/adverts", this.body, {headers: this.headers})
             .toPromise()
-            .then(res => res.json().data as Advertisement)
+            .then(res => res.json())
             .catch(this.handleError);
     }
 
     update(advertisement: Advertisement): Promise<Advertisement> {
-        const url = `${this.advertisementsUrl}/${advertisement.id}`;
+        const url = `${this.advertisementsUrl}/adverts/${advertisement.id}`;
         return this.http
             .put(url, JSON.stringify(advertisement), {headers: this.headers})
             .toPromise()

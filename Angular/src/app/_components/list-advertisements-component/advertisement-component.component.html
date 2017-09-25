@@ -1,3 +1,14 @@
+<!--
+<div class="container-fluid">
+
+    <md-select placeholder="Location">
+        <md-option *ngFor="let city of cities">
+            {{city}}
+        </md-option>
+    </md-select>
+
+</div>
+
 <div class="searchFilters">
 
     <div *ngFor="let advert of listAdverts">
@@ -18,4 +29,55 @@
         </div>
 
     </div>
+</div>
+-->
+
+<div class="searchFilters">
+    <div style="margin: 10px">
+        <button class="btn-search" md-raised-button color="accent" routerLink="/home">Back</button>
+    </div>
+
+    <div *ngFor="let advert of listAdverts; let i of index" >
+
+        <md-card class="example-card" #card>
+            <md-expansion-panel>
+
+                <md-expansion-panel-header>
+                    <md-panel-title>
+                        <md-card-header>
+                            <div md-card-avatar class="example-header-image"></div>
+                            <h4>{{ advert.name }}</h4>
+                        </md-card-header>
+                    </md-panel-title>
+
+                    <md-panel-description style="float: right">
+                        City: {{ advert.location}}
+                    </md-panel-description>
+                </md-expansion-panel-header>
+                <!--</md-expansion-panel>-->
+
+                <div>
+                    <md-card-content>
+                        <h5>Job type: {{advert.jobType}}</h5>
+                        <p><b>Description:</b> {{ advert.description}} </p>
+                        <hr />
+                        <div class="small">
+                            <p><b>Company name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> {{ advert.company }}</p>
+                            <p><b>Company website: &nbsp;</b> <a href="http://{{advert.website}}">{{ advert.website }}</a></p>
+                        </div>
+                        <hr />
+                        <md-card-actions>
+                            <fb-like href="https://zyramedia.com"></fb-like>
+                            <button md-button (click)="saveFav()">LIKE</button>
+                            <button md-button (click)="share()">SHARE</button>
+                        </md-card-actions>
+                    </md-card-content>
+                </div>
+            </md-expansion-panel>
+
+
+        </md-card>
+
+    </div>
+
 </div>

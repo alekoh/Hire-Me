@@ -5,7 +5,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    height: 95%;
+    justify-content: space-between;
+    height: 100%;
     background: #673ab7; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#673ab7, #ffd740); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#673ab7, #ffd740); /* For Opera 11.1 to 12.0 */
@@ -15,19 +16,18 @@
 
 /* Search form */
 .search {
-    margin-top: 5%;
     flex-direction: column;
     justify-content: center;
-    height: 93%;
-    /* width: 35%; */
-    flex: 1 55%;
+    height: 100%;
+    width: 54%;
+    /*flex: 1 45%;*/
 }
 
 
 /* Map element */
 .map {
     width: 45%;
-    flex: 1 45%;
+    /*flex: 1 45%;*/
     overflow: hidden;
-    height: 105%;
+    height: 95%;
 }

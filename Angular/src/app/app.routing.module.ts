@@ -23,6 +23,7 @@ const routes: Routes = [
 
     { path: "postAdvert", component: PostAdvertComponent},
 
+    { path: "home/searchloc", component: SearchResultsComponent }
 ];
 
 @NgModule({
